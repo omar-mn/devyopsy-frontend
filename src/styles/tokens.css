@@ -1,0 +1,104 @@
+/*
+  Design tokens — single source of truth for colour.
+
+  Theme resolution order:
+    1. :root                         → light (default)
+    2. @media (prefers-color-scheme) → dark, follows the operating system
+    3. [data-theme="light|dark"]     → explicit override, reserved for future
+                                       user preferences (no UI sets it yet)
+  Components must only use the semantic tokens below, never raw colours.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* Brand (theme independent) */
+  --color-primary: #702b3b;
+  --color-primary-hover: #54202d;
+
+  /* Surfaces */
+  --color-background: #f7f5f3;
+  --color-band: #ffffff;      /* full-width alternate section background */
+  --color-surface: #ffffff;   /* panels and mockups */
+  --color-elevated: #ffffff;
+  --color-primary-tint: #f1e8ea;
+
+  /* Text */
+  --color-heading: #191719;
+  --color-text: #302c2d;
+  --color-muted: #6f6768;
+  --color-accent: #702b3b;       /* brand colour for decorative marks */
+  --color-accent-text: #702b3b;  /* brand colour for text */
+
+  /* Lines */
+  --color-border: #e8e3e1;
+  --color-border-strong: #d6cfcd;
+  --color-line: #b9afad;
+
+  /* Logo */
+  --logo-ink: #191719;
+  --logo-accent: #702b3b;
+
+  /* Typography and layout */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 6px;
+  --container: 1120px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --header-h: 64px;
+}
+
+/* Dark palette, declared once and applied by both mechanisms below. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-primary: #84364a;
+    --color-primary-hover: #983f55;
+
+    --color-background: #202124;
+    --color-band: #27292d;
+    --color-surface: #2d3035;
+    --color-elevated: #35383e;
+    --color-primary-tint: #3a2a30;
+
+    --color-heading: #f1f1f1;
+    --color-text: #dcdde0;
+    --color-muted: #a4a6ac;
+    --color-accent: #b8566e;
+    --color-accent-text: #d08b9c;
+
+    --color-border: #3c3f45;
+    --color-border-strong: #4a4d54;
+    --color-line: #565961;
+
+    --logo-ink: #f1f1f1;
+    --logo-accent: #b8566e;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-primary: #84364a;
+  --color-primary-hover: #983f55;
+
+  --color-background: #202124;
+  --color-band: #27292d;
+  --color-surface: #2d3035;
+  --color-elevated: #35383e;
+  --color-primary-tint: #3a2a30;
+
+  --color-heading: #f1f1f1;
+  --color-text: #dcdde0;
+  --color-muted: #a4a6ac;
+  --color-accent: #b8566e;
+  --color-accent-text: #d08b9c;
+
+  --color-border: #3c3f45;
+  --color-border-strong: #4a4d54;
+  --color-line: #565961;
+
+  --logo-ink: #f1f1f1;
+  --logo-accent: #b8566e;
+}

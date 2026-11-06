@@ -1,0 +1,74 @@
+.hero { padding-block: clamp(48px, 8vw, 104px) clamp(56px, 8vw, 96px); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5.6vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin-block: 20px 24px;
+}
+.hero h1 .accent { color: var(--color-accent-text); display: block; }
+.hero .lede { margin-bottom: 36px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-visual {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+.hero-visual .visual-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+.pipe { padding: 8px 18px 14px; }
+.pipe-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 0;
+}
+.pipe-row:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 4.5px;
+  top: 34px;
+  bottom: -10px;
+  width: 1px;
+  background: var(--color-border);
+}
+.node {
+  width: 10px;
+  height: 10px;
+  margin-top: 6px;
+  border-radius: 50%;
+  border: 2px solid var(--color-heading);
+  background: var(--color-surface);
+  position: relative;
+  z-index: 1;
+}
+.node.is-done { background: var(--color-heading); }
+.node.is-live { border-color: var(--color-accent); background: var(--color-accent); }
+.pipe-label { color: var(--color-muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.pipe-value { color: var(--color-heading); margin-top: 2px; overflow-wrap: anywhere; }
+.pipe-meta { color: var(--color-muted); font-size: 0.75rem; padding-top: 2px; white-space: nowrap; }
+.pipe-meta.ok { color: var(--color-accent-text); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .pipe-meta { display: none; }
+}
